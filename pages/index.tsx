@@ -116,10 +116,10 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className="tracking-wider flex items-center text-slate-900/90 justify-center h-screen flex-col bg-gradient-to-tr from-cyan-500/25 to-sky-500/40 font-system">
+    <div className="p-4 tracking-wider flex items-center text-slate-900/90 justify-center h-screen flex-col bg-gradient-to-tr from-cyan-500/25 to-sky-500/40 font-system">
       <h1 className="text-center text-6xl font-semibold ">随机标签池🧊</h1>
 
-      <div className="mt-8 text-slate-900/60">
+      <div className="mt-8 text-slate-900/60 text-center">
         随机抽取标签池的标签，默认自动选择20个标签抽取，请先过滤需要的类目。
       </div>
       <button

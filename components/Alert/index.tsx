@@ -12,7 +12,7 @@ interface IAlertProps {
 
 const Alert = ({
   open,
-  position = { horizontal: 'left', vertical: 'bottom' },
+  position = { horizontal: 'center', vertical: 'top' },
   onClose,
   message = 'NON - Message',
   duration = 4000,
