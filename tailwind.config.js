@@ -24,5 +24,5 @@ module.exports = {
     letterSpacing: { wider: '.1em', widest: '.25em' },
     extend: {},
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/line-clamp')],
 };

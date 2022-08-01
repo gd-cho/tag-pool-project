@@ -29,6 +29,7 @@ const Home: NextPage = () => {
   const [tagCount, setTagCount] = useState<number>(20);
   const [category, setCategory] = useState<string>(tagKey[0]);
   const [isHideSpinner, setIsHideSpinner] = useState<boolean>(true);
+  console.log(tagCount);
 
   const [openAlert, setOpenAlert] = useState<{
     open: boolean;
@@ -43,12 +44,15 @@ const Home: NextPage = () => {
   const getTag = (tagName: typeTag, count?: number) => {
     const toothbrush = tagPool[tagName];
 
-    const temp: string[] = [];
+    let temp: string[] = [];
 
     count = typeof count === 'number' && count > 0 ? count : 20;
 
     if (toothbrush.length < count) {
       setOpenAlert({ open: true, message: `${tagName} 标签数量少于 ${count}` });
+      temp = toothbrush;
+      setTag(temp);
+      return;
     }
 
     for (let i = 0; i < count; i++) {
@@ -75,7 +79,7 @@ const Home: NextPage = () => {
   const copyTag = async () => {
     if (tag && !!tag.length) {
       try {
-        await navigator.clipboard.writeText(tag.join(','));
+        await navigator.clipboard.writeText(tag.join(' '));
         setOpenAlert({
           open: true,
           message: '标签复制成功!!',
@@ -116,7 +120,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className="p-4 tracking-wider flex items-center text-slate-900/90 justify-center h-screen flex-col bg-gradient-to-tr from-cyan-500/25 to-sky-500/40 font-system">
+    <div className="p-4 tracking-wider flex items-center text-slate-900/90 justify-center h-screen flex-col bg-gradient-to-tr from-cyan-500/25 to-sky-500/50 font-system">
       <h1 className="text-center text-6xl font-semibold ">随机标签池🧊</h1>
 
       <div className="mt-8 text-slate-900/60 text-center">
@@ -137,10 +141,11 @@ const Home: NextPage = () => {
           placement={'bottom-start'}
         >
           <div
-            className="mt-8 text-xs text-zinc-500 p-1 px-4 rounded-xl shadow-md border cursor-pointer hover:bg-green-50 bg-slate-50 border-green-300 transition max-w-sm"
+            className="whitespace-normal text-ellipsis line-clamp-4 mt-8 text-xs text-zinc-500/70 p-1 px-4 rounded-xl shadow-2xl border cursor-pointer hover:bg-green-50 bg-slate-50 border-green-300 transition duration-500 max-w-sm"
+            style={{ height: '72px' }}
             onClick={copyTag}
           >
-            {tag.join(',')}
+            {tag.join(' ')}
           </div>
         </LightTooltip>
       ) : (
