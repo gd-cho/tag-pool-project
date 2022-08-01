@@ -149,7 +149,9 @@ const Home: NextPage = () => {
           </div>
         </LightTooltip>
       ) : (
-        <div className="mt-8 font-bold">暂无标签 (^///^)</div>
+        <div className="mt-8 font-bold" style={{ height: '72px' }}>
+          暂无标签 (^///^)
+        </div>
       )}
 
       <div
